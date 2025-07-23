@@ -1,0 +1,12 @@
+Exercice Crud et Rôles
+
+
+Faire un Crud complet avec inscription et connexion et les rôles, et affichage d’un menu différent si vous êtes en Admin ou user classique. (donc voir tous les user à vous de créer un lien qui n’apparait que lorsque je suis connecté en Admin)
+Sur la partie user je veux une page d’accueil et une page ou je peux modifier mon profil personnel ou le supprimer.
+Sur la partie Admin je veux voir tout les utilisateurs et avoir la possibilité de modifier ou supprimer un ou tous les users.
+Je veux une page d’accueil de votre choix et un page profil donc, je veux que les routes soi protégés, et je testerai cela moi-même eheh. Sur la page profil comme dit plus haut un user voit que son profil et l’admin voit tout les profils existant, a minima 5 profils.
+J’aimerai que toutes les redirections fonctionnent, et même celle du logout qui ramènerai à la page d’accueil et qu’ évidemment le menu propose des chose différentes que l’on soi connecté ou pas.
+
+Pour ceux qui souhaitent, essayer de regarder comment un user peut mettre sa photo de profil en créant un champ dans la table et de pouvoir les avoir en affichage, en sachant que j'aimerai que les photos ne soit pas en base de donnée mais stockje dans un dossier sur votre architecture sous forme d'url.
+
+user = firstname, lastname, email, password, role
