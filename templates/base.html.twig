@@ -13,11 +13,13 @@
 
 		{% block javascripts %}
 			{% block importmap %}
+
 				{{ importmap('app') }}
 			{% endblock %}
 		{% endblock %}
 	</head>
-	<body class="bg-white">
-		{% block body %}{% endblock %}
-	</body>
-</html>
+	<body>
+		<div class="bg-white min-h-screen"> {% block body %}{% endblock %}
+			</div>
+		</body>
+	</html>
