@@ -9,4 +9,4 @@ J’aimerai que toutes les redirections fonctionnent, et même celle du logout q
 
 Pour ceux qui souhaitent, essayer de regarder comment un user peut mettre sa photo de profil en créant un champ dans la table et de pouvoir les avoir en affichage, en sachant que j'aimerai que les photos ne soit pas en base de donnée mais stockje dans un dossier sur votre architecture sous forme d'url.
 
-user = firstname, lastname, email, password, role
+user = firstname, lastname, email, password, roles
