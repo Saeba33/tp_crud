@@ -1,10 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My informations{% endblock %}
+{% block title %}
+	My informations
+{% endblock %}
 
 {% block body %}
 
 <div class="">
-<h1>My informations</h1>
+	<h1>My profile</h1>
+
+		{{user.firstname}}
+		{{user.lastname}}
+		{{user.email}}
+		<a href="{{ path('app_user_update', {'id': user.id}) }}" class="">Edit</a>
+		<a href="{{ path('app_user_delete', {'id': user.id}) }}" class="">Delete</a>
+
 </div>
-{% endblock %}
+
+<a href="{{ path('app_home_page') }}" class="">
+	<-- retour</a> {% endblock %}

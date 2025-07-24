@@ -46,7 +46,7 @@ final class UserController extends AbstractController
     }
 
 
-    #[Route('/user/updatedelete/{id}', name: 'app_delete_user')]
+    #[Route('/user/delete/{id}', name: 'app_user_delete')]
     public function deleteUser(EntityManagerInterface $emi, $id, UserRepository $usersRepo): Response
     {
         $user = $usersRepo->find($id);
