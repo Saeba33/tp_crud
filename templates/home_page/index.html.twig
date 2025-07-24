@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomePageController!
+{% block title %}Hello Visitor
 {% endblock %}
 
 {% block body %}
@@ -9,10 +9,19 @@
 	<div class="">
 		<h1>Hello !</h1>
 
-		<a href="{{ path('app_login') }}" class="">Log in</a>
-		<a href="{{ path('app_logout') }}" class="">Log out</a>
-		<a href="{{ path('app_register') }}" class="">Register</a>
-		<a href="{{ path('app_dashboard_admin') }}" class="">Dashboard Admin</a>
+		{% if app.user == false %}
+			<a href="{{path('app_login')}}">Log In</a>
+			<a href="{{path('app_register')}}">Register</a>
+		{% else %}
+			<div>
+				<a href="{{path('app_logout')}}">Log Out</a>
+			</div>
+			{% if is_granted("ROLE_ADMIN") %}
+				<div>
+					<a href="{{path('app_dashboard_admin')}}">Dashboard Admin</a>
+				</div>
+			{% endif %}
+		{% endif %}
 
 
 	</div>
