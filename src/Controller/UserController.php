@@ -54,6 +54,6 @@ final class UserController extends AbstractController
         $emi->flush();
 
         $this->addFlash('notice', 'Successfuly delete');
-        return $this->redirectToRoute('app_user');
+        return $this->redirectToRoute('app_home_page');
     }
 }
