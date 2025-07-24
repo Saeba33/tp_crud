@@ -17,19 +17,15 @@ class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Champs communs des formulaires (email, firstname, lastname)
         $builder
             ->add('email')
             ->add('firstname')
-            ->add('lastname')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms',
-                    ]),
-                ],
-            ])
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('lastname');
+
+        // Champs spécifiques à is_user et is_registration
+        if ($options['is_user'] || $options['is_registration']) {
+            $builder->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Both passwords must match',
                 'mapped' => false,
@@ -47,14 +43,28 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+            ]);
+        }
+
+        // Acceptation des thermes uniquement pour is_registration
+        if ($options['is_registration']) {
+            $builder->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms',
+                    ]),
+                ],
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'is_registration' => false,
+            'is_user' => false,
         ]);
     }
 }

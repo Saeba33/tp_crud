@@ -6,27 +6,29 @@
 
 {% block body %}
 
-	<div class="">
-		<h1>Update my informations</h1>
-		{{ form_start(form) }}
-		<div class="">First name
-			{{ form_widget(form.firstname, {'attr': {'class': ''}})	}}
-		</div>
-
-		<div class="">Last name
-			{{ form_widget(form.lastname, {'attr': {'class': ''}})	}}
-		</div>
-
-
-		<div class="">Email
-			{{ form_widget(form.email, {'attr': {'class': ''}})	}}
-		</div>
-
-
-		<button class="">Save modifciations</button>
-		{{ form_end(form)}}
-
-
+<div class="">
+	<h1>Update my informations</h1>
+	{{ form_start(form) }}
+	<div class="">First name
+		{{ form_widget(form.firstname, {'attr': {'class': ''}})	}}
 	</div>
 
-{% endblock %}
+	<div class="">Last name
+		{{ form_widget(form.lastname, {'attr': {'class': ''}})	}}
+	</div>
+
+
+	<div class="">Email
+		{{ form_widget(form.email, {'attr': {'class': ''}})	}}
+	</div>
+
+
+	<button class="">Save modifciations</button>
+	{{ form_end(form)}}
+
+
+</div>
+
+<a href="{{ path('app_user', {'id': user.id}) }}" class="">
+
+	<-- retour</a> {% endblock %}
