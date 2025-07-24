@@ -5,21 +5,28 @@
 {% endblock %}
 
 {% block body %}
-	<div class="">
-		<h1>Hello !</h1>
-		{% if app.user == false %}
-			<a href="{{path('app_login')}}">Log In</a>
-			<a href="{{path('app_register')}}">Register</a>
-		{% else %}
-			<div>
-				<a href="{{path('app_logout')}}">Log Out</a>
-				<a href="{{ path('app_user', {'id': app.user.id}) }}" class="">See my profile</a>
-			</div>
-			{% if is_granted("ROLE_ADMIN") %}
+	<div class="flex flex-col items-center h-screen justify-center bg-white">
+		<h1 class="text-4xl">Welcome to super project !</h1>
+		<div class="flex gap-4">
+
+			{% if app.user == false %}
+				<a class="bg-blue-500 px-2 py-1" href="{{path('app_login')}}">Log In</a>
+				<a class="bg-green-500 px-2 py-1" href="{{path('app_register')}}">Register</a>
+
+			{% else %}
 				<div>
-					<a href="{{path('app_dashboard_admin')}}">Admin Dashboard</a>
+					<a class="bg-blue-500 px-2 py-1" href="{{path('app_logout')}}">Log Out</a>
+
+					<a class="bg-blue-500 px-2 py-1" href="{{ path('app_user', {'id': app.user.id}) }}" class="">See my profile</a>
+
 				</div>
+				{% if is_granted("ROLE_ADMIN") %}
+					<div>
+						<a class="bg-blue-500 px-2 py-1" href="{{path('app_dashboard_admin')}}">Admin Dashboard</a>
+					</div>
+				{% endif %}
 			{% endif %}
-		{% endif %}
+		</div>
 	</div>
+
 {% endblock %}
