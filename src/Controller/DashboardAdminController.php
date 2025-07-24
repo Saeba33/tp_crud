@@ -50,7 +50,7 @@ final class DashboardAdminController extends AbstractController
     }
 
 
-    #[Route('/dashboardAdmin/delete/{id}', name: 'app_delete_user')]
+    #[Route('/dashboardAdmin/delete/{id}', name: 'app_dashboard_admin_delete')]
     #[IsGranted("ROLE_ADMIN")]
     public function deleteUser(EntityManagerInterface $emi, $id, UserRepository $usersRepo): Response
     {

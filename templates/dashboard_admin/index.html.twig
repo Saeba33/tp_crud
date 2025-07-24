@@ -13,6 +13,8 @@
 			{{user.firstname}}
 			{{user.lastname}}
 			{{user.email}}
+			<a href="{{ path('app_dashboard_admin_update', {'id': user.id}) }}" class="">Edit</a>
+			<a href="{{ path('app_dashboard_admin_delete', {'id': user.id}) }}" class="">Delete</a>
 
 
 		{% endfor %}
