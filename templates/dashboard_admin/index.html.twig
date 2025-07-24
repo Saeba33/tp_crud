@@ -6,18 +6,17 @@
 
 {% block body %}
 
-	<div class="">
-		<h1>Users List</h1>
+<div class="">
+	<h1>Users List</h1>
 
-		{% for user in users %}
-			{{user.firstname}}
-			{{user.lastname}}
-			{{user.email}}
-			<a href="{{ path('app_dashboard_admin_update', {'id': user.id}) }}" class="">Edit</a>
-			<a href="{{ path('app_dashboard_admin_delete', {'id': user.id}) }}" class="">Delete</a>
+	{% for user in users %}
+		{{user.firstname}}
+		{{user.lastname}}
+		{{user.email}}
+		<a href="{{ path('app_dashboard_admin_update', {'id': user.id}) }}" class="">Edit</a>
+		<a href="{{ path('app_dashboard_admin_delete', {'id': user.id}) }}" class="">Delete</a>
+	{% endfor %}
+</div>
 
-
-		{% endfor %}
-	</div>
-
-{% endblock %}
+<a href="{{ path('app_home_page') }}" class="">
+	<-- retour</a> {% endblock %}
