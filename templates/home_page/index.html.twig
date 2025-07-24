@@ -15,7 +15,7 @@
 		{% else %}
 			<div>
 				<a href="{{path('app_logout')}}">Log Out</a>
-				<a href="{{path('app_user')}}">See my profile</a>
+				{# <a href="{{path('app_user')}}">See my profile</a> #}
 
 			</div>
 			{% if is_granted("ROLE_ADMIN") %}
