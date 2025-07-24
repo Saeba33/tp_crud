@@ -55,8 +55,16 @@ final class DashboardAdminController extends AbstractController
     public function deleteUser(EntityManagerInterface $emi, $id, UserRepository $usersRepo): Response
     {
         $user = $usersRepo->find($id);
-        $emi->remove($user);
-        $emi->flush();
+
+
+        if ($user === $this->getUser()) {
+            $this->addFlash('error', 'You cannot delete your own account while logged in.');
+            return $this->redirectToRoute('app_dashboard_admin');
+
+            $emi->remove($user);
+            $emi->flush();
+
+        }
 
         $this->addFlash('notice', 'Successfuly delete');
         return $this->redirectToRoute('app_dashboard_admin');
