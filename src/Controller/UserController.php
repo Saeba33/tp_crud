@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-use App\Form\RegistrationFormType;
+use App\Form\UserFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class UserController extends AbstractController
@@ -28,7 +27,7 @@ final class UserController extends AbstractController
     public function updateUser(UserRepository $userRepo, Request $request, EntityManagerInterface $emi, $id): Response
     {
         $user = $userRepo->find($id);
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UserFormType::class, $user);
         $form = $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

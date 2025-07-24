@@ -9,11 +9,11 @@
 	<div class="">
 		<h1>Update user</h1>
 		{{ form_start(form) }}
-		<div class="">First-Name
+		<div class="">First name
 			{{ form_widget(form.firstname, {'attr': {'class': ''}})	}}
 		</div>
 
-		<div class="">Lastname
+		<div class="">Last name
 			{{ form_widget(form.lastname, {'attr': {'class': ''}})	}}
 		</div>
 
@@ -24,7 +24,7 @@
 
 
 		<button class="">Save modifciations</button>
-		{{ form_end(form, {render_rest: false}) }}
+		{{ form_end(form)}}
 
 
 	</div>
