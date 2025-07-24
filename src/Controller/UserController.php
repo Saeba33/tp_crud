@@ -2,17 +2,59 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
-    public function index(): Response
+    #[Route('/user/{id}', name: 'app_user')]
+    public function readUsers(UserRepository $userRepo, $id): Response
     {
+        $user = $userRepo->find($id);
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
+            'user' => $user
         ]);
+    }
+
+    #[Route('/user/update/{id}', name: 'app_user_update')]
+    public function updateUser(UserRepository $userRepo, Request $request, EntityManagerInterface $emi, $id): Response
+    {
+        $user = $userRepo->find($id);
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $emi-> persist($user);
+            $emi->flush();
+
+            $this->addFlash('notice', 'Successfuly update');
+            return $this->redirectToRoute('app_user');
+
+        }
+
+        return $this->render('user/update.html.twig', [
+            'controller_name' => 'UserController',
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    #[Route('/user/updatedelete/{id}', name: 'app_delete_user')]
+    public function deleteUser(EntityManagerInterface $emi, $id, UserRepository $usersRepo): Response
+    {
+        $user = $usersRepo->find($id);
+        $emi->remove($user);
+        $emi->flush();
+
+        $this->addFlash('notice', 'Successfuly delete');
+        return $this->redirectToRoute('app_user');
     }
 }
