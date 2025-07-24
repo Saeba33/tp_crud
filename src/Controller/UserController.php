@@ -35,7 +35,9 @@ final class UserController extends AbstractController
             $emi->flush();
 
             $this->addFlash('notice', 'Successfuly update');
-            return $this->redirectToRoute('app_user');
+
+            return $this->redirectToRoute('app_user', ['id' => $user->getId()]);
+
 
         }
 
