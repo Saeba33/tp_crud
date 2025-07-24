@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello Visitor
+{% block title %}
+	Welcome to super-project
 {% endblock %}
 
 {% block body %}
-
-
 	<div class="">
 		<h1>Hello !</h1>
-
 		{% if app.user == false %}
 			<a href="{{path('app_login')}}">Log In</a>
 			<a href="{{path('app_register')}}">Register</a>
@@ -23,7 +21,5 @@
 				</div>
 			{% endif %}
 		{% endif %}
-
-
 	</div>
 {% endblock %}
