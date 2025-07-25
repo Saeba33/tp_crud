@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Update my profile
+	Modifier mon profil
 {% endblock %}
 
 {% block body %}
-<div class="">
-	<h1>Update my informations</h1>
-	{{ form_start(form) }}
-	<button class="">Save modifciations</button>
-	{{ form_end(form)}}
+	<div class="min-h-screen bg-gray-50 py-8">
+		<h1 class="text-3xl font-bold text-gray-900 mb-2">Modifier mes informations</h1>
+		{{ form_start(form) }}
+		<button class="">Sauvegarder</button>
+		{{ form_end(form)}}
 
 
-	<a href="{{ path('app_user', {'id': app.user.id}) }}" class="">
-		<-- retour</a> </div>{% endblock %}
+		<a href="{{ path('app_user', {'id': app.user.id}) }}" class="">
+			&#x2190;Retour</a>
+	</div>
+{% endblock %}
