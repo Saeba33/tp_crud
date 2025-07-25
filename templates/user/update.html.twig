@@ -5,14 +5,39 @@
 {% endblock %}
 
 {% block body %}
-	<div class="min-h-screen bg-gray-50 py-8">
-		<h1 class="text-3xl font-bold text-gray-900 mb-2">Modifier mes informations</h1>
-		{{ form_start(form) }}
-		<button class="">Sauvegarder</button>
-		{{ form_end(form)}}
+	<div class="min-h-screen bg-gray-50 py-8 flex flex-col mx-auto">
+		<h1 class="text-5xl font-bold text-gray-900 my-8">Modifier mes informations</h1>
+
+		<div class="flex flex-col justify-center w-xl mx-auto shadow-xl rounded-xl p-12">
+
+			{{ form_start(form) }}
+			{{ form_label(form.email, 'Adresse email', {'attr': {'class': 'block text-sm font-medium text-gray-700 mb-2'}}) }}
+			{{ form_widget(form.email, {'attr': {'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg mb-3'}}) }}
+
+			{{ form_label(form.firstname, 'Prénom', {'attr': {'class': 'block text-sm font-medium text-gray-700 mb-2'}}) }}
+			{{ form_widget(form.firstname, {'attr': {'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg mb-3'}}) }}
+
+			{{ form_label(form.lastname, 'Nom', {'attr': {'class': 'block text-sm font-medium text-gray-700 mb-2'}}) }}
+			{{ form_widget(form.lastname, {'attr': {'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg mb-3'}}) }}
+
+			{{ form_label(form.plainPassword.first, 'Mot de passe', {'attr': {'class': 'block text-sm font-medium text-gray-700 mb-2'}}) }}
+			{{ form_widget(form.plainPassword.first, {'attr': {'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg mb-3'}}) }}
+
+			{{ form_label(form.plainPassword.second, 'Confirmer le mot de passe', {'attr': {'class': 'block text-sm font-medium text-gray-700 mb-2'}}) }}
+			{{ form_widget(form.plainPassword.second, {'attr': {'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg mb-3'}}) }}
 
 
-		<a href="{{ path('app_user', {'id': app.user.id}) }}" class="">
-			&#x2190;Retour</a>
+			<button type="submit" class="mt-8 w-full text-white bg-orange-400 font-semibold py-3 px-4 rounded-lg hshadow-lg cursor-pointer hover:bg-orange-600">
+				Sauvegarder
+			</button>
+			{{ form_end(form)}}
+
+		</div>
+
+		<div class="mt-5">
+			<a href="{{ path('app_user', {'id': app.user.id}) }}" class="text-gray-500 text-sm rounded-md w-fit px-3 py-2 hover:text-gray-800 cursor-pointer">
+				&#x2190; Retour</a>
+		</div>
+
 	</div>
 {% endblock %}
